@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'client.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -25,6 +27,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  CardClient _client = new CardClient();
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    final card = await _client.list();
+    print(card.name);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
