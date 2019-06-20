@@ -3,19 +3,20 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 
-import 'card.dart';
+import 'cards.dart';
 import 'package:http/http.dart' as http;
 
 class CardClient {
-  Future<Card> list() async {
+  Future<Cards> list() async {
     final response =
-        await http.get('https://jjsonplaceholder.appspot.com/cards/1');
+        await http.get('https://jjsonplaceholder.appspot.com/cards');
     return compute(parse, response.bodyBytes);
   }
 
-  static Card parse(Uint8List bodyBytes) {
-    final jsonString = utf8.decode(bodyBytes);
+  static Cards parse(Uint8List bodyBytes) {
+    var jsonString = utf8.decode(bodyBytes);
+    jsonString = "{\"list\" : " + jsonString + "}";
     final map = json.decode(jsonString);
-    return Card.fromJson(map);
+    return Cards.fromJson(map);
   }
 }

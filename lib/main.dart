@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'client.dart';
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -36,8 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   loadData() async {
-    final card = await _client.list();
-    print(card.name);
+    final cards = await _client.list();
+    print(cards.list[0].name);
   }
 
   @override
