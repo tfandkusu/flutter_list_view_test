@@ -7,9 +7,12 @@ part of 'card.dart';
 // **************************************************************************
 
 Card _$CardFromJson(Map<String, dynamic> json) {
-  return Card(json['id'] as int, json['name'] as String,
-      json['company'] as String, json['title'] as String)
-    ..division = json['division'] as String;
+  return Card(
+      json['id'] as int,
+      json['name'] as String,
+      json['company'] as String,
+      json['division'] as String,
+      json['title'] as String);
 }
 
 Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
